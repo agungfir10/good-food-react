@@ -5,6 +5,7 @@ import Welcome from '../components/Welcome';
 import CityList from '../components/CityList';
 import Footer from '../components/Footer';
 import axios from 'axios';
+import { API } from '../config/api';
 
 class Home extends React.Component {
   constructor(props) {
@@ -13,6 +14,8 @@ class Home extends React.Component {
     this.state = {
       keyword: '',
       featuredCities: null,
+      citiesResultSearch: null,
+      cityKeywordSearch: '',
     };
   }
 
@@ -21,15 +24,50 @@ class Home extends React.Component {
   };
 
   getFeaturedCities = () => {
-    const url = 'http://developers.zomato.com/api/v2';
-    axios.get(url, {
-      headers: {
-        'user-key': '65c18d6c2cb5c06c8a354fa2b5171d0',
-      },
-      params: {
-        city_ids: '74,11052,170',
-      },
-    });
+    const url = `${API.zomato.baseUrl}/cities`;
+    axios
+      .get(url, {
+        headers: {
+          'user-key': API.zomato.api_key,
+        },
+        params: {
+          city_ids: '74,11052,170',
+        },
+      })
+      .then(({ data }) => {
+        if (data.state === 'success') {
+          this.setState({ featuredCities: data.location_suggestions });
+        }
+      });
+  };
+
+  changeKeywordHandler = (event) => {
+    this.setState({ keyword: event.target.value });
+  };
+
+  searchHandler = (event) => {
+    const keyword = this.state.keyword;
+
+    const url = `${API.zomato.baseUrl}/cities`;
+    axios
+      .get(url, {
+        headers: {
+          'user-key': API.zomato.api_key,
+        },
+        params: {
+          q: keyword,
+        },
+      })
+      .then(({ data }) => {
+        if (data.status === 'success') {
+          this.setState({
+            citiesResultSearch: data.location_suggestions,
+            keyword: '',
+            citiesKeywordSearch: keyword,
+          });
+        }
+      })
+      .catch((e) => console.log(e));
   };
   render() {
     const citiesDummy = [
@@ -62,10 +100,17 @@ class Home extends React.Component {
           <SearchCity
             value={this.state.keyword}
             onChangeKeywordHandler={this.changeKeywordHandler}
+            onClickSearch={this.searchHandler}
           />
-          <CityList title="Result" cities={citiesDummy} />
+          {this.state.cityKeywordSearch !== '' && (
+            <CityList
+              title="Result"
+              cities={this.state.citiesResultSearch}
+              showSubtitle={true}
+              subtitle={this.state.cityKeywordSearch}
+            />
+          )}
         </div>
-        <Footer />
       </React.Fragment>
     );
   }

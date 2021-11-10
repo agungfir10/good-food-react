@@ -1,19 +1,20 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-function CardCity({ name, country_name }) {
+function CityCard({ id, name, country_name }) {
   return (
     <div className="col-4">
       <div className="card bg-light mb-3">
         <div className="card-body">
           <h3 className="card-title">{name}</h3>
           <p>{country_name}</p>
-          <a href="/#" className="card-text">
+          <Link to={`/city/${id}`} className="card-text">
             See restaurants in {name}
-          </a>
+          </Link>
         </div>
       </div>
     </div>
   );
 }
 
-export default CardCity;
+export default CityCard;

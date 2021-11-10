@@ -1,6 +1,6 @@
 import React from 'react';
 
-function SearchCity(props) {
+function SearchCity({ onClickSearch, value, onChangeKeywordHandler }) {
   return (
     <div className="row">
       <div className="col">
@@ -8,19 +8,21 @@ function SearchCity(props) {
         <div className="card">
           <div className="card-body">
             <div className="row">
-              <div className="col-11">
+              <div className="d-flex">
                 <input
                   type="text"
                   name=""
                   id=""
                   placeholder="Type keyword or city name"
                   className="form-control"
-                  value={props.value}
-                  onChange={props.onChangeKeywordHandler}
+                  value={value}
+                  onChange={onChangeKeywordHandler}
                 />
-              </div>
-              <div className="col-1">
-                <button className="btn btn-primary" type="submit">
+                <button
+                  className="btn btn-primary ml-2"
+                  type="submit"
+                  onClick={onClickSearch}
+                >
                   Search
                 </button>
               </div>
