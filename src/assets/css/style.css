@@ -1,0 +1,104 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.image-hero {
+    height: 60vh;
+    object-fit: cover;
+}
+
+.navbar-brand {
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.hero {
+    position: relative;
+}
+
+.hero p {
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-weight: 700;
+    transform: translate(-50%, -50%);
+    font-size: 64px;
+    text-align: center;
+}
+
+
+footer {
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding: 40px 0 0;
+}
+
+
+footer .copyright {
+    background-color: #282c35;
+}
+
+footer p {
+    margin: 10px;
+    color: #ccc;
+}
+
+footer ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin-top: 30px;
+}
+
+footer a {
+    color: #d2d2d2;
+    text-decoration: none;
+}
+
+
+footer .social-networks {
+    text-align: center;
+    margin-right: 5px;
+    color: #f9f9f9;
+    padding: 10px;
+    transition: 0.2s;
+}
+
+footer .social-networks a {
+    font-size: 32px;
+    padding: 16px;
+}
+
+footer .social-networks a:hover {
+    text-decoration: none;
+}
+
+footer .social-networks .facebook:hover {
+    color: #0077e2;
+}
+
+footer .social-networks .twitter:hover {
+    color: #3ea5ff;
+}
+
+footer .social-networks .instagram:hover {
+    color: #fd6eea;
+}
+
+footer .social-networks .google:hover {
+    color: #fa4444;
+}
+
+@media screen and (max-width:1200px) {
+    .hero p {
+        font-size: 50px;
+    }
+}
+
+@media screen and (max-width:720px) {
+    .hero p {
+        font-size: 40px;
+    }
+}
