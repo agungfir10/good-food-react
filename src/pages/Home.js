@@ -1,10 +1,9 @@
+import axios from 'axios';
 import React from 'react';
+import CityList from '../components/CityList';
 import Hero from '../components/Hero';
 import SearchCity from '../components/SearchCity';
 import Welcome from '../components/Welcome';
-import CityList from '../components/CityList';
-import Footer from '../components/Footer';
-import axios from 'axios';
 import { API } from '../config/api';
 
 class Home extends React.Component {
@@ -94,7 +93,8 @@ class Home extends React.Component {
         <Welcome />
         <div className="container mt-3 mb-3">
           <CityList
-            cities={this.state.featuredCities}
+            // cities={this.state.featuredCities}
+            cities={citiesDummy}
             title="Featured Cities"
           />
           <SearchCity
