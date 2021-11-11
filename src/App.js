@@ -4,7 +4,7 @@ import NavBar from './components/NavBar';
 import Home from './pages/Home';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import City from './pages/City';
-import Footer from './components/Footer';
+import Footer from './components/Footer/Footer';
 
 class App extends React.Component {
   render() {

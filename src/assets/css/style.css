@@ -39,69 +39,6 @@
     text-align: center;
 }
 
-
-footer {
-    padding-top: 3px;
-    padding-bottom: 3px;
-    padding: 40px 0 0;
-}
-
-
-footer .copyright {
-    background-color: #282c35;
-}
-
-footer p {
-    margin: 10px;
-    color: #ccc;
-}
-
-footer ul {
-    list-style-type: none;
-    padding-left: 0;
-    margin-top: 30px;
-}
-
-footer a {
-    color: #d2d2d2;
-    text-decoration: none;
-}
-
-
-footer .social-networks {
-    text-align: center;
-    margin-right: 5px;
-    color: #f9f9f9;
-    padding: 10px;
-    transition: 0.2s;
-}
-
-footer .social-networks a {
-    font-size: 32px;
-    padding: 16px;
-}
-
-footer .social-networks a:hover {
-    text-decoration: none;
-    transition: 0.5s ease;
-}
-
-footer .social-networks .facebook:hover {
-    color: #0077e2;
-}
-
-footer .social-networks .twitter:hover {
-    color: #3ea5ff;
-}
-
-footer .social-networks .instagram:hover {
-    color: #ffa43c;
-}
-
-footer .social-networks .google:hover {
-    color: #ff5959;
-}
-
 @media screen and (max-width:1200px) {
     .hero p {
         font-size: 50px;

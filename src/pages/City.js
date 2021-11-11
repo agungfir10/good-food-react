@@ -1,5 +1,7 @@
 import axios from 'axios';
 import React from 'react';
+import CategoryList from '../components/CategoryList';
+import SearchKeyword from '../components/SearchKeyword';
 import { API } from '../config/api';
 
 const categoriesDummy = [
@@ -36,6 +38,7 @@ class City extends React.Component {
       city: null,
       categories: null,
       categorySelected: null,
+      keyword: '',
     };
   }
 
@@ -77,10 +80,14 @@ class City extends React.Component {
   categoryClickHandler = (category) => {
     this.setState({ categorySelected: category });
   };
+
+  changekKeywordHandler = (event) => {
+    this.setState({ keyword: event.target.value });
+  };
   render() {
     return (
       <React.Fragment>
-        <div className="container-fluid my-4">
+        <div className="container-fluid py-4 bg-light">
           {this.state.city ? (
             <div className="row">
               <div className="col">
@@ -95,27 +102,36 @@ class City extends React.Component {
           )}
 
           <div className="row">
-            <div className="col-3">
+            <div className="col-lg-3">
               <h5>Categories</h5>
-              {this.state.categories && (
-                <div className="list-group">
-                  {this.state.categories.map((category) => (
-                    <button
-                      key={category.id}
-                      className={
-                        'list-group-item list-group-item-action ' +
-                        (this.state.categorySelected &&
-                        this.state.categorySelected.id == category.id
-                          ? 'active'
-                          : '')
-                      }
-                      onClick={() => this.categoryClickHandler(category)}
-                    >
-                      {category.name}
-                    </button>
-                  ))}
+              <CategoryList
+                categories={this.state.categories}
+                categorySelected={this.state.categorySelected}
+                categoryClickHandler={(category) =>
+                  this.categoryClickHandler(category)
+                }
+              />
+            </div>
+            <div className="col">
+              <SearchKeyword
+                keyword={this.state.keyword}
+                changekKeywordHandler={this.changekKeywordHandler}
+              />
+              <div className="card bg-light my-3">
+                <div className="card-body">
+                  <p>Find Restaurants based on criteria.</p>
+                  <div className="card-title">
+                    <table className="table table-hover">
+                      <tbody />
+                    </table>
+                    <div className="pull-right">
+                      <button className="btn btn-primary" type="button">
+                        Search
+                      </button>
+                    </div>
+                  </div>
                 </div>
-              )}
+              </div>
             </div>
           </div>
         </div>
