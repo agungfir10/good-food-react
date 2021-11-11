@@ -9,6 +9,16 @@
     object-fit: cover;
 }
 
+.hero::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    content: "";
+}
+
 .navbar-brand {
     font-size: 28px;
     font-weight: 700;
@@ -73,6 +83,7 @@ footer .social-networks a {
 
 footer .social-networks a:hover {
     text-decoration: none;
+    transition: 0.5s ease;
 }
 
 footer .social-networks .facebook:hover {
@@ -84,11 +95,11 @@ footer .social-networks .twitter:hover {
 }
 
 footer .social-networks .instagram:hover {
-    color: #fd6eea;
+    color: #ffa43c;
 }
 
 footer .social-networks .google:hover {
-    color: #fa4444;
+    color: #ff5959;
 }
 
 @media screen and (max-width:1200px) {

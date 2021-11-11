@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 function CityCard({ city }) {
   return (
-    <div className="col-4">
+    <div className="col-lg-4 col-md-6 col-sm-12">
       <div className="card bg-light mb-3">
         <div className="card-body">
           <h3 className="card-title">{city.name}</h3>

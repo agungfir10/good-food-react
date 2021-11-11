@@ -5,6 +5,7 @@ import Hero from '../components/Hero';
 import SearchCity from '../components/SearchCity';
 import Welcome from '../components/Welcome';
 import { API } from '../config/api';
+import citiesDummy from '../data/citiesDummy';
 
 class Home extends React.Component {
   constructor(props) {
@@ -69,24 +70,6 @@ class Home extends React.Component {
       .catch((e) => console.log(e));
   };
   render() {
-    const citiesDummy = [
-      {
-        id: 72,
-        name: 'Jakarta',
-        country_name: 'Indonesia',
-      },
-      {
-        id: 99,
-        name: 'Bandung',
-        country_name: 'Indonesia',
-      },
-      {
-        id: 102,
-        name: 'Bali',
-        country_name: 'Indonesia',
-      },
-    ];
-
     return (
       <React.Fragment>
         <Hero />
