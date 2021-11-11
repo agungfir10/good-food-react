@@ -16,10 +16,10 @@ function SearchKeyword(props) {
                   placeholder="Type keyword i.e: restaurant's name, location, cuisine, etc."
                   className="form-control"
                   value={props.keyword}
-                  onChange={(e) => props.changekKeywordHandler(e)}
+                  onChange={(e) => props.changekKeywordHandler}
                 />
-                <button className="btn btn-primary ml-2 col-lg-2" type="submit">
-                  Add to criteria
+                <button className="btn btn-primary ml-2" type="submit">
+                  +Criteria
                 </button>
               </div>
             </div>

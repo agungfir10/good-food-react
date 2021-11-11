@@ -39,6 +39,7 @@ class City extends React.Component {
       categories: null,
       categorySelected: null,
       keyword: '',
+      criteria: [],
     };
   }
 
@@ -63,7 +64,13 @@ class City extends React.Component {
       })
       .then(({ data }) => {
         const city = data.location_suggestions[0];
-        this.setState({ city });
+        let newCriteria = {
+          criteriaName: 'City',
+          data: city,
+        };
+        let criteria = [...this.state.criteria];
+        criteria.push(newCriteria);
+        this.setState({ city, criteria });
       })
       .catch((err) => console.log(err));
   };
@@ -78,7 +85,15 @@ class City extends React.Component {
   }
 
   categoryClickHandler = (category) => {
-    this.setState({ categorySelected: category });
+    let criteria = [...this.state.criteria];
+    criteria = criteria.filter((cri) => cri.criteriaName !== 'Category');
+    const newCriteria = {
+      criteriaName: 'Category',
+      data: category,
+    };
+
+    criteria.push(newCriteria);
+    this.setState({ categorySelected: category, criteria });
   };
 
   changekKeywordHandler = (event) => {
@@ -122,7 +137,17 @@ class City extends React.Component {
                   <p>Find Restaurants based on criteria.</p>
                   <div className="card-title">
                     <table className="table table-hover">
-                      <tbody />
+                      <tbody>
+                        {this.state.criteria.map((cri, index) => (
+                          <tr key={index} className="table active">
+                            <td width="40%">{cri.criteriaName}</td>
+                            <td width="50%">{cri.data}</td>
+                            <td width="10%">
+                              <i className="fa fa-times" aria-hidden="true" />
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
                     </table>
                     <div className="pull-right">
                       <button className="btn btn-primary" type="button">
