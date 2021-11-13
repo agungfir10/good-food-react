@@ -1,16 +1,16 @@
 const citiesDummy = [
   {
-    id: 72,
-    name: 'Jakarta',
+    id: '02hfwn4bh8uzkfw1e867',
+    name: 'Malang',
     country_name: 'Indonesia',
   },
   {
-    id: 99,
+    id: '8maika7giinkfw1e867',
     name: 'Bandung',
     country_name: 'Indonesia',
   },
   {
-    id: 102,
+    id: 'zvf11c0sukfw1e867',
     name: 'Bali',
     country_name: 'Indonesia',
   },

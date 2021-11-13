@@ -2,7 +2,7 @@ import axios from 'axios';
 import React from 'react';
 import CityList from '../components/CityList';
 import Hero from '../components/Hero';
-import SearchCity from '../components/SearchCity';
+import SearchRestaurant from '../components/SearchRestaurant';
 import Welcome from '../components/Welcome';
 import { API } from '../config/api';
 import citiesDummy from '../data/citiesDummy';
@@ -14,8 +14,9 @@ class Home extends React.Component {
     this.state = {
       keyword: '',
       featuredCities: null,
-      citiesResultSearch: null,
-      cityKeywordSearch: '',
+      restauantsResultSearch: null,
+      restaurants: null,
+      keywordSearch: '',
     };
   }
 
@@ -40,58 +41,61 @@ class Home extends React.Component {
         }
       });
   };
-
-  changeKeywordHandler = (event) => {
-    this.setState({ keyword: event.target.value });
+  getRestaurants = () => {
+    axios
+      .get(API.zomato.baseUrl + '/list')
+      .then(({ data }) => {
+        const restaurants = data.restaurants;
+        this.setState({ restaurants });
+      })
+      .catch((e) => console.log(e));
   };
-
   searchHandler = (event) => {
     const keyword = this.state.keyword;
 
-    const url = `${API.zomato.baseUrl}/cities`;
+    const url = `${API.zomato.baseUrl}/search`;
     axios
       .get(url, {
-        headers: {
-          'user-key': API.zomato.api_key,
-        },
         params: {
           q: keyword,
         },
       })
       .then(({ data }) => {
-        if (data.status === 'success') {
-          this.setState({
-            citiesResultSearch: data.location_suggestions,
-            keyword: '',
-            citiesKeywordSearch: keyword,
-          });
-        }
+        const restaurants = data.restaurants;
+        this.setState({
+          restaurants,
+          keyword: '',
+          citiesKeywordSearch: keyword,
+        });
       })
       .catch((e) => console.log(e));
   };
+
+  componentDidMount() {
+    console.log('componentDidMount()');
+    this.getRestaurants();
+  }
   render() {
     return (
       <React.Fragment>
         <Hero />
         <Welcome />
         <div className="container mt-3 mb-3">
-          <CityList
-            // cities={this.state.featuredCities}
-            cities={citiesDummy}
-            title="Featured Cities"
-          />
-          <SearchCity
+          <CityList cities={citiesDummy} title="Featured Cities" />
+          <SearchRestaurant
             value={this.state.keyword}
             onChangeKeywordHandler={this.changeKeywordHandler}
             onClickSearch={this.searchHandler}
           />
-          {this.state.cityKeywordSearch !== '' && (
+          {this.state.keywordSearch !== '' ? (
             <CityList
               title="Result"
-              cities={this.state.citiesResultSearch}
+              cities={this.state.restauantsResultSearch}
               showSubtitle={true}
-              subtitle={this.state.cityKeywordSearch}
+              subtitle={this.state.keywordSearch}
             />
+          ) : (
+            <CityList cities={this.state.restaurants} />
           )}
         </div>
       </React.Fragment>

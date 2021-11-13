@@ -26,8 +26,6 @@ function CityList({ cities, title, subtitle, showSubtitle }) {
 }
 
 const _renderCityList = (cities) => {
-  // console.log(cities);
-  console.log(typeof cities);
   if (cities.length > 0) {
     return cities.map((city) => <CityCard key={city.id} city={city} />);
   } else {

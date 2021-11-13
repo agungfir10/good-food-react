@@ -1,10 +1,10 @@
 import React from 'react';
 
-function SearchCity({ onClickSearch, value, onChangeKeywordHandler }) {
+function SearchRestaurant({ onClickSearch, value, onChangeKeywordHandler }) {
   return (
     <div className="row">
       <div className="col">
-        <h3>Search City</h3>
+        <h3>Search Restaurant</h3>
         <div className="card">
           <div className="card-body">
             <div className="row">
@@ -13,7 +13,7 @@ function SearchCity({ onClickSearch, value, onChangeKeywordHandler }) {
                   type="text"
                   name=""
                   id=""
-                  placeholder="Type keyword or city name"
+                  placeholder="Type keyword or name, category and menu"
                   className="form-control"
                   value={value}
                   onChange={onChangeKeywordHandler}
@@ -34,4 +34,4 @@ function SearchCity({ onClickSearch, value, onChangeKeywordHandler }) {
   );
 }
 
-export default SearchCity;
+export default SearchRestaurant;

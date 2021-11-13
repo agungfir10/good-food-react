@@ -1,6 +1,8 @@
 export const API = {
   zomato: {
-    baseUrl: 'https://developers.zomato.com/api/v2.1',
-    api_key: process.env.REACT_API_KEY,
+    baseUrl: 'https://restaurant-api.dicoding.dev',
+    smallImageUrl: 'https://restaurant-api.dicoding.dev/images/small/',
+    mediumImageUrl: 'https://restaurant-api.dicoding.dev/images/medium/',
+    largeImageUrl: 'https://restaurant-api.dicoding.dev/images/large/',
   },
 };

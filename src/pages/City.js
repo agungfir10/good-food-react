@@ -118,7 +118,7 @@ class City extends React.Component {
 
           <div className="row">
             <div className="col-lg-3">
-              <h5>Categories</h5>
+              <h3>Categories</h3>
               <CategoryList
                 categories={this.state.categories}
                 categorySelected={this.state.categorySelected}
